@@ -1,1 +1,1 @@
-# madina-attendance-app.
+# madina-attendance-app
