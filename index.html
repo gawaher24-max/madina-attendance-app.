@@ -8,21 +8,21 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
   :root{
-    /* لوحة الأخضر (قابلة للتعديل) */
-    --green-900:#0b3d2e; /* أخضر داكن جداً */
-    --green-800:#114d37;
-    --green-700:#166241;
-    --green-600:#1b7a4e; /* يقترب من الصورة */
-    --green-400:#4ea77f;
-    --green-200:#bfe3cf;
+    /* لوحة الألوان الجديدة */
+    --green-900:#114a38; /* أخضر داكن جداً */
+    --green-800:#1a664e;
+    --green-700:#238164;
+    --green-600:#2b9f7a;
+    --green-400:#5fcfa5;
     --paper:#ffffff; --bg:#f3f6f4; --text:#1b1b1b; --muted:#6b6b6b;
-    --accent:#1b7a4e; --shadow:0 10px 28px rgba(0,0,0,.08);
+    --accent:var(--green-700); --shadow:0 10px 28px rgba(0,0,0,.08);
     --radius:16px;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--text);font-family:"Tajawal",system-ui,-apple-system,Segoe UI,Roboto,"Noto Kufi Arabic",sans-serif}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:"Tajawal",system-ui,-apple-system,Segoe UI,Roboto,"Noto Kufi Arabic",sans-serif; text-align:right}
   header.madina{
     text-align:center;color:#fff;padding:18px 12px 22px;
+    /* الخلفية بتدرجات لونية */
     background: linear-gradient(180deg,var(--green-700),var(--green-600) 55%, var(--green-400));
     border-bottom:6px solid var(--green-900);
     position:relative; overflow:hidden;
@@ -34,8 +34,8 @@
   }
   .brand{display:flex; flex-direction:column; align-items:center; gap:10px}
   .brand img.logo{max-height:110px; width:auto; filter: drop-shadow(0 6px 16px rgba(0,0,0,.25));}
-  .brand h1{font-family:"Amiri",serif; margin:0; font-size:28px; letter-spacing:.3px}
-  .brand .subtitle{margin:2px 0 0; color:#e9f6ef}
+  .brand h1{font-family:"Amiri",serif; margin:0; font-size:28px; letter-spacing:.3px; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);}
+  .brand .subtitle{margin:2px 0 0; color:#e9f6ef; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);}
 
   main{max-width:1100px;margin:22px auto;padding:0 12px}
   .card{background:var(--paper); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; margin-bottom:16px}
@@ -58,20 +58,33 @@
   #login-box{display:none}
   .toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px}
   .badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:800;font-size:13px; border:1px solid #cfe7db; color:#0d513b; background:#e9f6ef}
+
+  /* التنسيقات الجديدة للنموذج */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .form-grid .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-grid .form-group.full-width {
+    grid-column: 1 / -1;
+  }
 </style>
 </head>
 <body>
 
 <header class="madina">
   <div class="brand">
-        <img src="logo.png" class="logo" alt="شعار حلقات المسجد النبوي">
-    <h1>حلقات المسجد النبوي الشريف</h1>
+    <img src="logo.PNG" class="logo" alt="شعار حلقات المسجد النبوي">
+    <h1>حلقة المعلمة فطومة / الفجر</h1>
     <p class="subtitle">لحفظ القرآن الكريم والمتون العلمية</p>
   </div>
 </header>
 
 <main>
-
     <div class="card toolbar">
     <div>
       <span class="muted">الوقت الآن (مكة): </span><span id="now" class="badge">--:--:--</span>
@@ -85,26 +98,31 @@
 
     <section id="student-form" class="card">
     <h2>تحضير الطالب</h2>
-    <form id="form" autocomplete="off">
-      <label>١) اسم الطالب</label>
-      <input id="name" required placeholder="مثال: أحمد بن خالد"/>
-
-      <label>٢) مقدار الحفظ</label>
-      <input id="hifz" required placeholder="مثال: سورة الكهف ١–١١"/>
-
-      <label>٣) المراجعة</label>
-      <input id="mur" required placeholder="مثال: نصف جزء عم"/>
-
-      <label>٤) هل تم الاستماع إلى الشيخ؟</label>
-      <div class="switch">
-        <label><input type="radio" name="listened" value="نعم" required> نعم</label>
-        <label><input type="radio" name="listened" value="لا"> لا</label>
+    <form id="form" autocomplete="off" class="form-grid">
+      <div class="form-group">
+        <label>١) اسم الطالب</label>
+        <input id="name" required placeholder="مثال: أحمد بن خالد"/>
       </div>
-
-      <label>ملاحظات (اختياري)</label>
-      <textarea id="notes" placeholder="أي ملاحظات للمعلم…"></textarea>
-
-      <div class="row" style="margin-top:12px">
+      <div class="form-group">
+        <label>٢) مقدار الحفظ</label>
+        <input id="hifz" required placeholder="مثال: سورة الكهف ١–١١"/>
+      </div>
+      <div class="form-group">
+        <label>٣) المراجعة</label>
+        <input id="mur" required placeholder="مثال: نصف جزء عم"/>
+      </div>
+      <div class="form-group">
+        <label>٤) هل تم الاستماع إلى الشيخ؟</label>
+        <div class="switch">
+          <label><input type="radio" name="listened" value="نعم" required> نعم</label>
+          <label><input type="radio" name="listened" value="لا"> لا</label>
+        </div>
+      </div>
+      <div class="form-group full-width">
+        <label>ملاحظات (اختياري)</label>
+        <textarea id="notes" placeholder="أي ملاحظات للمعلم…"></textarea>
+      </div>
+      <div class="row" style="margin-top:12px; grid-column: 1 / -1;">
         <button type="submit" class="btn">إرسال للمعلّم</button>
         <span id="ok" class="muted" style="color:#23935c;display:none">تم الحفظ بنجاح</span>
         <span id="err" class="muted" style="color:#c0392b;display:none"></span>
@@ -119,7 +137,7 @@
       <input id="email" type="email" placeholder="بريد المعلّم">
       <input id="password" type="password" placeholder="كلمة المرور">
       <button id="btnLogin" class="btn alt">دخول</button>
-    </div>
+      </div>
     <div id="lerr" class="muted" style="color:#c0392b;margin-top:8px"></div>
   </section>
 
@@ -257,7 +275,7 @@ document.getElementById('btnLast7').onclick = ()=>{
 };
 document.getElementById('btnExport').onclick = ()=>{
   const rows=(window.__rows||[]).map(r=>[ksa(r.created_at),r.name,r.hifz,r.mur,r.listened?'نعم':'لا',r.notes||'']);
-  const header=['التاريخ','الاسم','الحفظ','المراجعة','الاستماع','ملاحظات'];
+  const header=['التاريخ','الاسم','الحفظ','المراجعة','الاستماع','الملاحظات'];
   const csv=[header,...rows].map(a=>a.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
   const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}); const a=document.createElement('a');
   a.href=URL.createObjectURL(blob); a.download='attendance.csv'; a.click();
