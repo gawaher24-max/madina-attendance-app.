@@ -1,1 +1,67 @@
+<style>
+  :root{
+    /* لوحة الألوان الجديدة */
+    --green-900:#114a38; /* أخضر داكن جداً */
+    --green-800:#1a664e;
+    --green-700:#238164;
+    --green-600:#2b9f7a;
+    --green-400:#5fcfa5;
+    --paper:#ffffff; --bg:#f3f6f4; --text:#1b1b1b; --muted:#6b6b6b;
+    --accent:var(--green-700); --shadow:0 10px 28px rgba(0,0,0,.08);
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:"Tajawal",system-ui,-apple-system,Segoe UI,Roboto,"Noto Kufi Arabic",sans-serif; text-align:right}
+  header.madina{
+    text-align:center;color:#fff;padding:18px 12px 22px;
+    /* الخلفية بتدرجات لونية */
+    background: linear-gradient(180deg,var(--green-700),var(--green-600) 55%, var(--green-400));
+    border-bottom:6px solid var(--green-900);
+    position:relative; overflow:hidden;
+  }
+  header.madina::after{
+    content:""; position:absolute; inset:-30% -10% auto -10%;
+    height:240px; background:radial-gradient(70% 60% at 50% 20%, rgba(255,255,255,.18), transparent 60%);
+    pointer-events:none;
+  }
+  .brand{display:flex; flex-direction:column; align-items:center; gap:10px}
+  .brand img.logo{max-height:110px; width:auto; filter: drop-shadow(0 6px 16px rgba(0,0,0,.25));}
+  .brand h1{font-family:"Amiri",serif; margin:0; font-size:28px; letter-spacing:.3px; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);}
+  .brand .subtitle{margin:2px 0 0; color:#e9f6ef; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);}
 
+  main{max-width:1100px;margin:22px auto;padding:0 12px}
+  .card{background:var(--paper); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; margin-bottom:16px}
+  h2{margin:0 0 10px; font-weight:800; letter-spacing:.2px}
+  label{display:block;font-weight:700;margin:8px 0 6px}
+  input,textarea{width:100%;padding:12px;border:1px solid #e2e2e2;border-radius:12px;font-size:16px;background:#fff}
+  input:focus,textarea:focus{outline:none;border-color:var(--green-600);box-shadow:0 0 0 3px rgba(27,122,78,.12)}
+  textarea{min-height:90px}
+  .switch{display:flex;gap:14px;background:#f5f7f6;border-radius:24px;padding:8px 12px;margin-top:6px}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .btn{cursor:pointer;border:0;border-radius:12px;padding:10px 14px;font-weight:800;color:#fff;background:var(--green-600)}
+  .btn.alt{background:#3a7bd5}
+  .btn.gray{background:#888}
+  .btn.green{background:#23935c}
+  .muted{color:var(--muted)}
+  table{width:100%;border-collapse:collapse}
+  th,td{padding:10px;border-bottom:1px solid #eee;text-align:right;vertical-align:top}
+  th{background:#f7faf8;position:sticky;top:0}
+  #teacher-panel{display:none}
+  #login-box{display:none}
+  .toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:800;font-size:13px; border:1px solid #cfe7db; color:#0d513b; background:#e9f6ef}
+
+  /* التنسيقات الجديدة للنموذج */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .form-grid .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-grid .form-group.full-width {
+    grid-column: 1 / -1;
+  }
+</style>
