@@ -221,3 +221,12 @@ th {
 .form-grid .form-group.full-width {
   grid-column: 1 / -1;
 }
+.site-footer {
+  text-align: center;
+  color: #666;
+  font-size: 13px;
+  padding: 18px 10px;
+  border-top: 1px solid #ddd;
+  margin-top: 30px;
+  background: #fafafa;
+}
