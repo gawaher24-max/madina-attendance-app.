@@ -6,7 +6,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /* الوقت بتوقيت مكة + نافذة 4-6 فجراً */
-const TZ = 'Asia/Riyadh', START_H = 4, END_H = 6;
+const TZ='Asia/Riyadh', START_H=0, END_H=5;
 function nowStr() {
   return new Intl.DateTimeFormat('ar-SA', { timeZone: TZ, hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(new Date());
 }
